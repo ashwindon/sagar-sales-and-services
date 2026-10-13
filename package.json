@@ -1,0 +1,27 @@
+{
+  "name": "sagar-sales-and-services",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Landing page for Sagar Sales and Services — solar equipment and agricultural water solutions",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "optimize:images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7"
+  }
+}

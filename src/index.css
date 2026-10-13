@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   Design tokens — shared by components via Tailwind theme (see tailwind.config.js)
+   Palette: sky blue + deep blue, fresh green accents, sunflower yellow (footer
+   only), white. Bright, clean, airy.
+   ========================================================================== */
+:root {
+  --brand-deep: #0b3c8d;
+  --brand-dusk: #0a2e66;
+  --brand-sky: #38bdf8;
+  --brand-leaf: #22c55e;
+  --brand-sun: #f5c51d;
+  --ink: #0f2b52;
+
+  /* Glass tokens (ui-ux-pro-max glassmorphism profile: blur 10–20px,
+     translucent white 15–30%, 1px light border) */
+  --glass-blur: 16px;
+  --glass-bg: rgba(255, 255, 255, 0.16);
+  --glass-bg-strong: rgba(255, 255, 255, 0.26);
+  --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================================
+   Base + accessibility
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-[16px] leading-relaxed text-ink antialiased;
+}
+
+/* Visible focus ring for keyboard users (never removed) */
+:focus-visible {
+  outline: 3px solid var(--brand-sun);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  @apply absolute left-4 top-4 z-[100] -translate-y-24 rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-deep shadow-glass;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Gentle fallback gradient behind every image slot so layout stays intact
+   while photos load (or if a file is missing) */
+.img-slot {
+  background: linear-gradient(135deg, var(--brand-sky) 0%, var(--brand-deep) 100%);
+}
+
+/* ============================================================================
+   Glass surfaces
+   ========================================================================== */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(11, 60, 141, 0.18);
+}
+
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass {
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+}
+
+/* Solid fallback for browsers WITHOUT backdrop-filter:
+   nearly-opaque white keeps text contrast at AA level */
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass {
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 32px rgba(11, 60, 141, 0.22);
+  }
+  /* Dark-ish glass surfaces (footer panel over a photo) fall back darker */
+  .glass-dark-fallback {
+    background: rgba(12, 46, 102, 0.82);
+  }
+}
+
+/* Stronger glass for the floating navbar so links stay readable over any scene */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 24px rgba(11, 60, 141, 0.16);
+}
+
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass-nav {
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+}
+
+/* ============================================================================
+   Motion guards
+   ========================================================================== */
+/* JS animations are disabled per-component when prefers-reduced-motion is set;
+   this CSS catch-all also kills CSS transitions for those users. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
