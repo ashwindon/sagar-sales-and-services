@@ -16,15 +16,15 @@
 export const BUSINESS_NAME = 'Sagar Sales and Services'
 export const BUSINESS_TAGLINE = 'Solar energy and agricultural water solutions, all in one place.'
 
-export const WHATSAPP_NUMBER = '91XXXXXXXXXX' // ← REPLACE with the real number (digits only)
+export const WHATSAPP_NUMBER = '919421727353' // digits only, country code first
 
 export const WHATSAPP_GREETING =
   'Hello Sagar Sales and Services! I have a question about your solar and water products.'
 
-// Placeholder contact details — REPLACE before going live.
+// Contact details shown in the footer. The email is still a placeholder.
 export const CONTACT = {
-  phoneDisplay: '+91 XX XXXX XXXX',
-  address: 'Shop address placeholder, Main Road, City, State — 000000',
+  phoneDisplay: '+91 94217 27353',
+  address: 'Lane Number 9, Purtiwadi, Jaysingpur, Maharashtra 416101',
   email: 'hello@example.com',
 }
 

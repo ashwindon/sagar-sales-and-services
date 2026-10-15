@@ -54,7 +54,7 @@ export default function Navbar() {
             </svg>
           </span>
           <span className="text-[15px] font-extrabold leading-tight text-brand-dusk sm:text-base">
-            Sagar <span className="font-medium text-brand-deep">Sales and Services</span>
+            Sagar <span className="font-extrabold text-brand-deep">Sales and Services</span>
           </span>
         </a>
 
