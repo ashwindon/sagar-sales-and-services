@@ -63,7 +63,7 @@ export default function SiteFooter() {
                     </g>
                   </svg>
                 </span>
-                Sagar <span className="font-extrabold">Sales and Services</span>
+                <span>{BUSINESS_NAME}</span>
               </p>
               <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-white">
                 {BUSINESS_NAME} is where you find solar energy equipment and
